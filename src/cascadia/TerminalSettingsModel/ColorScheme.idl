@@ -11,7 +11,7 @@ namespace Microsoft.Terminal.Settings.Model
         Microsoft.Terminal.Core.Color Foreground;
         Microsoft.Terminal.Core.Color Background;
         Microsoft.Terminal.Core.Color SelectionBackground;
-        Microsoft.Terminal.Core.Color CursorColor;
+        Microsoft.Terminal.Core.CursorColors CursorColor;
 
         // winrt::com_arrays prevent data binding.
         // Instead of representing Table as a property,

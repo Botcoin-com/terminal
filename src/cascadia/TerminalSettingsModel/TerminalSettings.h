@@ -63,7 +63,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
 
         INHERITABLE_SETTING(Model::TerminalSettings, bool, SnapOnInput, true);
         INHERITABLE_SETTING(Model::TerminalSettings, bool, AltGrAliasing, true);
-        INHERITABLE_SETTING(Model::TerminalSettings, til::color, CursorColor, DEFAULT_CURSOR_COLOR);
+        INHERITABLE_SETTING(Model::TerminalSettings, Microsoft::Terminal::Core::CursorColors, CursorColor, til::color{ DEFAULT_CURSOR_COLOR }, false);
         INHERITABLE_SETTING(Model::TerminalSettings, Microsoft::Terminal::Core::CursorStyle, CursorShape, Core::CursorStyle::Vintage);
         INHERITABLE_SETTING(Model::TerminalSettings, uint32_t, CursorHeight, DEFAULT_CURSOR_HEIGHT);
         INHERITABLE_SETTING(Model::TerminalSettings, hstring, WordDelimiters, DEFAULT_WORD_DELIMITERS);

@@ -250,7 +250,9 @@ namespace winrt::Microsoft::Terminal::Settings::Editor::implementation
                     }
                     else if (stringTag == CursorColorTag)
                     {
-                        CurrentColorScheme().CursorColor(newColor);
+                        auto color{ CurrentColorScheme().CursorColor() };
+                        color.Background = newColor;
+                        CurrentColorScheme().CursorColor(color);
                         _CurrentCursorColor.Color(newColor);
                     }
                     else if (stringTag == SelectionBackgroundColorTag)
@@ -410,7 +412,7 @@ namespace winrt::Microsoft::Terminal::Settings::Editor::implementation
         }
         _CurrentForegroundColor.Color(til::color{ colorScheme.Foreground() });
         _CurrentBackgroundColor.Color(til::color{ colorScheme.Background() });
-        _CurrentCursorColor.Color(til::color{ colorScheme.CursorColor() });
+        _CurrentCursorColor.Color(til::color{ colorScheme.CursorColor().Background });
         _CurrentSelectionBackgroundColor.Color(til::color{ colorScheme.SelectionBackground() });
     }
 

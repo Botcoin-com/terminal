@@ -14,11 +14,18 @@ namespace Microsoft.Terminal.Core
         UInt8 A;
     };
 
+    struct CursorColors
+    {
+        Color Background;
+        Boolean Invert;
+    };
+
     declare
     {
         // Forward declare this parameterized specialization so that it lives
         // in TerminalCore instead of being flung to the winds of all IDL dependents.
         interface Windows.Foundation.IReference<Microsoft.Terminal.Core.Color>;
+        interface Windows.Foundation.IReference<Microsoft.Terminal.Core.CursorColors>;
     }
 
     enum CursorStyle
@@ -44,7 +51,7 @@ namespace Microsoft.Terminal.Core
         Boolean SnapOnInput;
         Boolean AltGrAliasing;
 
-        Microsoft.Terminal.Core.Color CursorColor;
+        CursorColors CursorColor;
         CursorStyle CursorShape;
         UInt32 CursorHeight;
         String StartingTitle;

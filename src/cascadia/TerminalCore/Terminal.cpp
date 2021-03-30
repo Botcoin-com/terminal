@@ -144,8 +144,9 @@ void Terminal::UpdateSettings(ICoreSettings settings)
 
     if (_buffer)
     {
+        const auto cursorColor{ settings.CursorColor() };
         _buffer->GetCursor().SetStyle(settings.CursorHeight(),
-                                      til::color{ settings.CursorColor() },
+                                      cursorColor.Invert ? INVALID_COLOR : COLORREF{ til::color{ cursorColor.Background } },
                                       cursorShape);
     }
 

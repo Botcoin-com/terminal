@@ -448,3 +448,51 @@ JSON_ENUM_MAPPER(::winrt::Microsoft::Terminal::Settings::Model::WindowingMode)
         pair_type{ "useExisting", ValueType::UseExisting },
     };
 };
+
+// Type Description:
+// Converter for cursor colors.
+template<>
+struct ::Microsoft::Terminal::Settings::Model::JsonUtils::ConversionTrait<::winrt::Microsoft::Terminal::Core::CursorColors>
+{
+    static constexpr std::string_view invertToken{ "invert" };
+    ::Microsoft::Terminal::Settings::Model::JsonUtils::ConversionTrait<til::color> colorConverter{};
+    ::winrt::Microsoft::Terminal::Core::CursorColors FromJson(const Json::Value& json)
+    {
+        ::winrt::Microsoft::Terminal::Core::CursorColors ret{};
+        if (json.isString())
+        {
+            if (json.asString() == invertToken)
+            {
+                ret.Invert = true;
+            }
+            else
+            {
+                GetValue(json, ret.Background); // Re-convert as M.T.C.Color into Background
+            }
+        }
+        else if (json.isObject())
+        {
+            GetValueForKey(json, "background", ret.Background);
+        }
+        return ret;
+    }
+
+    bool CanConvert(const Json::Value& json)
+    {
+        return (json.isString() && json.asString() == invertToken) || json.isObject() || colorConverter.CanConvert(json);
+    }
+
+    Json::Value ToJson(const ::winrt::Microsoft::Terminal::Core::CursorColors& val)
+    {
+        if (val.Invert)
+        {
+            return Json::Value{ invertToken.data() };
+        }
+        return colorConverter.ToJson(val.Background);
+    }
+
+    std::string TypeDescription() const
+    {
+        return "invert | " + colorConverter.TypeDescription();
+    }
+};

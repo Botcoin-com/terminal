@@ -217,7 +217,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
         }
         if (profile.CursorColor())
         {
-            _CursorColor = til::color{ profile.CursorColor().Value() };
+            _CursorColor = profile.CursorColor().Value();
         }
 
         _ScrollState = profile.ScrollState();
@@ -274,7 +274,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
         _DefaultForeground = til::color{ scheme.Foreground() };
         _DefaultBackground = til::color{ scheme.Background() };
         _SelectionBackground = til::color{ scheme.SelectionBackground() };
-        _CursorColor = til::color{ scheme.CursorColor() };
+        _CursorColor =  scheme.CursorColor();
 
         const auto table = scheme.Table();
         std::array<winrt::Microsoft::Terminal::Core::Color, COLOR_TABLE_SIZE> colorTable{};

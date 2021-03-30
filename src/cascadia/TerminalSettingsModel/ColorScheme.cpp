@@ -58,7 +58,7 @@ ColorScheme::ColorScheme(winrt::hstring name, til::color defaultFg, til::color d
     _Foreground{ defaultFg },
     _Background{ defaultBg },
     _SelectionBackground{ DEFAULT_FOREGROUND },
-    _CursorColor{ cursorColor }
+    _CursorColor{ cursorColor, false /* Invert */ }
 {
 }
 

@@ -111,7 +111,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
         INHERITABLE_NULLABLE_SETTING(Model::Profile, Microsoft::Terminal::Core::Color, Foreground, nullptr);
         INHERITABLE_NULLABLE_SETTING(Model::Profile, Microsoft::Terminal::Core::Color, Background, nullptr);
         INHERITABLE_NULLABLE_SETTING(Model::Profile, Microsoft::Terminal::Core::Color, SelectionBackground, nullptr);
-        INHERITABLE_NULLABLE_SETTING(Model::Profile, Microsoft::Terminal::Core::Color, CursorColor, nullptr);
+        INHERITABLE_NULLABLE_SETTING(Model::Profile, Microsoft::Terminal::Core::CursorColors, CursorColor, nullptr);
 
         INHERITABLE_SETTING(Model::Profile, int32_t, HistorySize, DEFAULT_HISTORY_SIZE);
         INHERITABLE_SETTING(Model::Profile, bool, SnapOnInput, true);

@@ -71,7 +71,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
         WINRT_TERMINAL_COLOR_PROPERTY(Foreground); // defined in constructor
         WINRT_TERMINAL_COLOR_PROPERTY(Background); // defined in constructor
         WINRT_TERMINAL_COLOR_PROPERTY(SelectionBackground); // defined in constructor
-        WINRT_TERMINAL_COLOR_PROPERTY(CursorColor); // defined in constructor
+        WINRT_PROPERTY(winrt::Microsoft::Terminal::Core::CursorColors, CursorColor); // defined in constructor
 
     private:
         std::array<til::color, COLOR_TABLE_SIZE> _table;
